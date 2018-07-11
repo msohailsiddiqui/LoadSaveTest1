@@ -111,8 +111,11 @@ public class LoadSaveMain : MonoBehaviour
         {
             foreach(RenderTexture rt in loadedMaps)
             {
-                rt.Release();
-                Destroy(rt);
+                if (rt != null)
+                {
+                    rt.Release();
+                    Destroy(rt);
+                }
             }
             foreach(Material mat in quadMaterials)
             {
@@ -132,7 +135,7 @@ public class LoadSaveMain : MonoBehaviour
 
     public void LoadMultipleImagesFromDiskOneAtATime()
     {
-        if (filesToLoad.Count > 0)
+        if (filesToLoad.Count > 0 && filesToLoad.Count >= mapToLoadIndex && !string.IsNullOrEmpty(filesToLoad[mapToLoadIndex]))
         {
             if (loadedMaps.Count >= mapToLoadIndex)
             {
@@ -166,23 +169,26 @@ public class LoadSaveMain : MonoBehaviour
         int index = 0;
         foreach (string file in filesToLoad)
         {
-            if (loadedMaps.Count > index)
+            if (!string.IsNullOrEmpty(filesToLoad[index]))
             {
-                if (loadedMaps[index] != null)
+                if (loadedMaps.Count > index)
                 {
-                    loadedMaps[index].Release();
-                    Destroy(loadedMaps[index]);
-                    loadedMaps[index] = null;
+                    if (loadedMaps[index] != null)
+                    {
+                        loadedMaps[index].Release();
+                        Destroy(loadedMaps[index]);
+                        loadedMaps[index] = null;
+                    }
+                    loadedMaps[index] = FreeImageManager.Instance.LoadImage(filesToLoad[index], isLinear: false);
+                    quadMaterials[index].mainTexture = loadedMaps[index];
                 }
-                loadedMaps[index] = FreeImageManager.Instance.LoadImage(filesToLoad[index], isLinear: false);
-                quadMaterials[index].mainTexture = loadedMaps[index];
+                else
+                {
+                    loadedMaps.Add(FreeImageManager.Instance.LoadImage(filesToLoad[index], isLinear: false));
+                    quadMaterials[index].mainTexture = loadedMaps[index];
+                }
+                index++;
             }
-            else
-            {
-                loadedMaps.Add(FreeImageManager.Instance.LoadImage(filesToLoad[index], isLinear: false));
-                quadMaterials[index].mainTexture = loadedMaps[index];
-            }
-            index++;
         }
         mapToLoadIndex = index;
     }
