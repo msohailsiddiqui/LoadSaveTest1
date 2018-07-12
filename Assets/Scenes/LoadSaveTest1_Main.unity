@@ -1294,10 +1294,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 1554809392765422, guid: dac953fff9150d540aa9c960967a6cda, type: 2}
   filesToLoad:
-  - D:\\SOS\\Work\\Documents\\test case scans\\clover grass\\QvmG7sfy50yXazkr9awV3g_4K_Diffuse.exr
-  - D:\\SOS\\Work\\Documents\\test case scans\\Soil_Mulch_sfwnbgba\\sfwnbgba_8K_Albedo.exr
-  - D:\\SOS\\Work\\Documents\\test case scans\\Grass_rmnkhgp0\\rmnkhgp_4K_Albedo.exr
-  - D:\\SOS\\Work\\Documents\\test case scans\\Soil_Mulch_sfwnbgba\\sfwnbgba_8K_Normal.exr
+  - D:\\SOS\\Work\\Documents\\test albedos\\sg0kafvk_8K_Albedo.exr
+  - D:\\SOS\\Work\\Documents\\test albedos\\sg2ldcek_8K_Albedo.exr
+  - D:\\SOS\\Work\\Documents\\test albedos\\sglkfbmk_8K_Albedo.exr
+  - D:\\SOS\\Work\\Documents\\test albedos\\sgmkajak_8K_Albedo.exr
+  - D:\\SOS\\Work\\Documents\\test albedos\\sgnjfgtk_8K_Albedo.exr
+  - D:\\SOS\\Work\\Documents\\test albedos\\sgvkfjxk_8K_Albedo.exr
 --- !u!4 &1575700947
 Transform:
   m_ObjectHideFlags: 0

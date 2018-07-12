@@ -95,6 +95,7 @@ public class FreeImageManager : Singleton<FreeImageManager>
                     stream.Position = 0;
                 }
             }
+
 #if UNITY_STANDALONE_OSX
 			    if (stream == null)
 				    stream = new FileStream(path, FileMode.Open);
